@@ -1,4 +1,13 @@
-#!/usr/bin/env ruby 
-  #this means run in terminal and makes it a CLI app
-  puts 'hello world'
- 
+#!/usr/bin/env ruby
+require 'optparse'
+options = {}
+OptionParser.new do |parser|
+    parser.on("-n", "--name NAME", "The name of the person") do |value|
+        options[:name] = value
+    end
+  end.parse!
+ if options[:name]
+     puts 'hello ' + options[:name]
+  else
+    puts 'hello stranger'
+  end
